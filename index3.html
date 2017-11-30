@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>前端开发图表和线路图js特效展示</title>
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--Step:1 Prepare a dom for ECharts which (must) has size (width & hight)-->
+    <!--Step:1 为ECharts准备一个具备大小（宽高）的Dom-->
+    <div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+
+    <div id="mainMap" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+  
+    <!--Step:2 Import echarts.js-->
+    <!--Step:2 引入echarts.js
+// <script type="text/javascript" src="js/echarts.js"></script>
+    -->
+    
+    <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
+    
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+       var xData = [];
+
+        $.ajax({
+            url: 'text.php', //
+            type: 'get',
+            dataType: 'json',
+            //data:param,
+        success:function(data) {
+                //console.log(data);
+                //["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]  
+          for(var i=0; i<data.length; i++){
+                //console.log(data[i]);
+                xData.push(data[i]);    
+            }
+              console.log(xData);
+            },
+            error : function(data){
+
+            }
+        });
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: xData
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20, 10]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+ 
+
+
+
+
+    // Step:3 conifg ECharts's path, link to echarts.js from current page.
+    // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
+ /*   require.config({
+        paths: {
+            echarts: './js'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+            'echarts/chart/scatter',
+            'echarts/chart/map'
+        ],
+          // 绘制反馈量图形
+      
+            //--- 折柱 ---
+               var myChart = ec.init(document.getElementById('main'));
+               var param = {}; 
+
+     function abc() {
+
+             $.ajax({
+            url: 'text.php', //
+            type: 'get',
+            dataType: 'json',
+            //data:param,
+            success:function(data) {
+             console.log(data);
+                if (data.code == 0) {
+                       var data = data.data;
+                    if (data) { 
+
+                var option ={
+                    title: {
+                         text:data.title.text
+                           },
+                    tooltip: {},
+                    legend: {
+                        data:["销量"]
+                            },
+                     xAxis: {
+                        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                            },
+                     yAxis: {},
+                       }
+                        myChart.setOption(option);
+
+                    } else {
+                        alert('暂无数据！');
+                    }
+
+                  }     
+                  } ,
+            error: function (err) {
+                alert("请求失败")     
+            },
+               });       
+       
+           });
+abc();*/
+    </script>
+
+
+ </div>
+<!----main end------>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>前端开发js特效展示</title>
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="bd-color">
+     <div class="title"> 
+     前端开发js特效展示 
+     </div>
+    <div class="main">
+    <div class="title1">   
+    页面常见js特效
+    </div>
+    <div class="main-item1"> 
+    <div class="main-item1-title">1.模态弹出框</div>
+    <div class="main-item1-ct">
+    <button class="btn btn-primary" type="button" id="modal">点击我</button>
+    <p>   
+    点击按钮即可出现弹出层   
+    </p>
+    <p  class="develop-time">   
+    开发周期：1小时  
+    </p>
+<div class="modal" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">模态弹出窗标题</h4>
+			</div>
+			<div class="modal-body">
+				<p>模态弹出窗主体内容</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary">保存</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+  $(function(){
+    $("#modal").click(function(){
+      $("#mymodal").modal("toggle");
+    });
+  });
+</script>
+  
+    </div>  
+    </div>
+<!------main-item1 end--------->
+<div class="main-item1">    
+   <div class="main-item1-title">2.下拉菜单</div>
+   <div class="main-item1-ct">
+   <div class="navbar navbar-default" id="navmenu">
+    <a href="##" class="navbar-brand">W3cplus</a>
+    <ul class="nav navbar-nav">
+    	<li class="dropdown">
+			<a href="##" data-toggle="dropdown" class="dropdown-toggle" role="button" id="tutorial">教程<b class="caret"></b></a>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="tutorial">
+				<li role="presentation"><a href="##">CSS3</a></li>
+				<li role="presentation"><a href="##">HTML5</a></li>
+				<li role="presentation"><a href="##">Sass</a></li>
+			</ul>
+		</li>
+		<li><a href="##">前端论坛</a></li>
+		<li><a href="##">关于我们</a></li>
+	</ul>
+</div>
+  <p  class="develop-time">   
+    开发周期：1小时 
+ </p>
+   </div>  
+</div><!----main-item1------->
+<div class="main-item1">  
+ <div class="main-item1-title">3.Tab选项卡</div>
+  <div class="main-item1-ct">
+   <!-- 选项卡组件（菜单项nav-pills）-->
+<ul id="myTab" class="nav nav-pills" role="tablist">
+    <li class="active"><a href="#bulletin" role="tab" data-toggle="pill">公告</a></li>
+    <li><a href="#rule" role="tab" data-toggle="pill">规则</a></li>
+    <li><a href="#forum" role="tab" data-toggle="pill">论坛</a></li>
+    <li><a href="#security" role="tab" data-toggle="pill">安全</a></li>
+    <li><a href="#welfare" role="tab" data-toggle="pill">公益</a></li>
+</ul>
+<!-- 选项卡面板 -->
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="bulletin">公告内容面板</div>
+    <div class="tab-pane fade" id="rule">规则内容面板</div>
+    <div class="tab-pane fade" id="forum">论坛内容面板</div>
+    <div class="tab-pane fade" id="security">安全内容面板</div>
+    <div class="tab-pane fade" id="welfare">公益内容面板</div>
+</div>
+  <p  class="develop-time">   
+    开发周期：1小时 
+ </p>
+  </div>
+</div><!----main-item1------->
+<div class="main-item1">  
+ <div class="main-item1-title">4.提示框</div>
+  <div class="main-item1-ct">
+  <a class="btn btn-primary" 
+     data-toggle="tooltip" 
+     data-placement="right" 
+     title="提示框在居右">
+     提示框居右
+  </a>
+  <p  class="develop-time">   
+    开发周期：30分钟  
+ </p>
+  <script>
+  $(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $('#myTooltip').tooltip({
+      title:"我是一个提示框，我在顶部出现",
+      placement:'top'
+    });
+  });
+  </script>
+</div>
+</div><!----main-item1------->
+<div class="main-item1">  
+  <div class="main-item1-title">5.弹出框</div>
+   <div class="main-item1-ct">
+ <button type="button" class="btn btn-default" id="Popover">猛击我吧</button>
+<script>
+$(function(){
+  $('#Popover').popover({
+     title:"我是弹出框的标题",
+     content:"我是弹出框的内容",
+     placement:"right"
+  });
+});
+</script>
+  <p  class="develop-time">   
+    开发周期：30分钟  
+  </p>
+ </div>
+</div><!----main-item1------->
+<div class="main-item1">  
+<div class="main-item1-title">6.放大镜特效</div>
+  <div class="main-item1-ct">
+     <div id=preview>
+	<div class=jqzoom id=spec-n1 onClick="window.open('http://www.mobanwang.com/')"><IMG height=350
+	src="images/img04.jpg" jqimg="images/img04.jpg" width=350>
+	</div>
+    </div>
+ <SCRIPT type=text/javascript>
+	$(function(){			
+	   $(".jqzoom").jqueryzoom({
+			xzoom:400,
+			yzoom:400,
+			offset:10,
+			position:"right",
+			preload:1,
+			lens:1
+		});
+		$("#spec-list").jdMarquee({
+			deriction:"left",
+			width:350,
+			height:56,
+			step:2,
+			speed:4,
+			delay:10,
+			control:true,
+			_front:"#spec-right",
+			_back:"#spec-left"
+		});		
+	})
+	</SCRIPT> 
+<SCRIPT src="js/base.js" type=text/javascript></SCRIPT> 
+<SCRIPT src="js/lib.js" type=text/javascript></SCRIPT>
+<SCRIPT src="js/163css.js" type=text/javascript></SCRIPT>  
+ <p  class="develop-time">   
+    开发周期：1小时
+  </p> 
+ </div>
+</div><!----main-item1----->
+<div class="main-item1"> 
+<div class="main-item1-title">7.图片遮罩</div>
+ <div class="main-item1-ct">
+     <div class="wrap"> <a href="#x"> <img src='images/frog.jpg' alt='' /> <i></i>
+  <p> <b>Red Eye Frog</b> <span>Red-eyed tree frogs, as their name states, have bold red eyes with vertically narrowed pupils, a vibrant green body with yellow and blue striped sides, and orange toes. There is a great deal of regional variation in flank and thigh coloration.<br />
+    <br />
+    Although it has been suggested that A. callidryas' bright colors function as aposematic or sexual signals, neither of these hypotheses have been confirmed.</span> </p>
+  </a> </div>
+<!-- end wrap -->
+<div class="wrap"> <a href="#x"> <img src='images/emperor.jpg' alt='' /> <i></i>
+  <p> <b>Emperor Penguin</b> <span>The Emperor Penguin (Aptenodytes forsteri) is the tallest and heaviest of all living penguin species and is endemic to Antarctica.<br />
+    <br />
+    The male and female are similar in plumage and size, reaching 122 cm (48 in) in height and weighing anywhere from 22.37 kg (48.82 lb). The dorsal parts are black and sharply delineated from the white belly, pale-yellow breast and bright-yellow ear patches. </span> </p>
+  </a> </div>
+<!-- end wrap -->
+<div class="wrap"> <a href="#x"> <img src='images/pelican.jpg' alt='' /> <i></i>
+  <p> <b>Pelicans</b> <span>A pelican is a large water bird with a distinctive pouch under the beak, belonging to the bird family Pelecanidae.<br />
+    <br />
+    Along with the darters, cormorants, gannets, boobies, frigatebirds, and tropicbirds, pelicans make up the order Pelecaniformes. Modern pelicans are found on all continents except Antarctica. </span> </p>
+  </a> </div>
+<div class="cb"></div>
+<p  class="develop-time">   
+    开发周期：1.5小时 
+  </p> 
+ </div>
+</div><!----main-item1----->
+<div class="main-item1"> 
+<div class="main-item1-title">7.图片轮播</div>
+<div class="main-item1-ct">
+<div class="section-focus-pic" id="section-focus-pic">
+	<div class="pages" data-scro="list">
+		<ul>
+			<li class="item" style="left:0px;">
+				<a href="http://www.17sucai.com/" target="_blank"><img src="images/1.jpg" width="570" height="300"></a>
+				<h3><a href="http://www.17sucai.com/" target="_blank" style="color:#FFF;text-decoration:none;">天安门广场&quot;史上最大花果篮&quot;竣工</a></h3>
+				<div></div>
+			</li>
+			<li class="item">
+				<a href="http://www.17sucai.com/" target="_blank"><img src="images/2.jpg" width="570" height="300"></a>
+				<h3><a href="http://www.17sucai.com/" target="_blank" style="color: #FFF; text-decoration:none;">广州:10万元得来一座&quot;圆大厦&quot;</a></h3>
+				<div></div>
+			</li>
+			<li class="item">
+				<a href="http://www.17sucai.com/" target="_blank"><img src="images/3.jpg" width="570" height="300"></a><h3>
+				<a href="http://www.17sucai.com/" target="_blank" style="color: #FFF; text-decoration:none;">百度视频移动端亿万用户的背后</a></h3>
+				<div></div>
+			</li>
+		</ul>
+	</div>
+	<div class="controler" data-scro="controler">
+		<b class="down">1</b>
+		<b>2</b>
+		<b>3</b>
+	</div>
+	<div class="controler2" data-scro="controler2">
+		<a href="javascript:;" class="prev"><i></i></a>
+		<a href="javascript:;" class="next"><i></i></a>
+	</div>
+</div>
+<script type="text/javascript" src="js/script.js"></script>
+ <!------轮播 end------->
+  <p class="develop-time">   
+    开发周期：1小时  
+  </p> 
+ </div><!-------main-item1-ct------>
+</div>
+<!----main-item1 end-------->
+<div class="main-item1"> 
+<div class="main-item1-title">8.手风琴效果</div>
+<div class="main-item1-ct" style="position:relative; height:400px;">
+<div id="center">
+	<div id="slider">
+		<div class="slide">
+			<img class="diapo" src="images/sf10.jpg" alt="">
+			<div class="text">
+				  <span class="title">The best</span>
+				  The offspring of a customized orbiter, O飇ostem arose as the best balanced
+				  home for our plans. So we submitted to its conditions.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf14.jpg" alt="">
+			<div class="text">
+				<span class="title">Prototype</span>
+				O飇ostem's deep impulse flow is selectively regulated by a molecule
+				originated in the prototype model, that creates its own variational
+				principles, as oriented by the first local generation of terminable androids.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf24.jpg" alt="">
+			<div class="text">
+				  <span class="title">Has been reduced</span>
+				  Paired hosts come out nicely after only two cycles now. Their size has been
+				  reduced to a half the original as planned, and indeed they show an
+				  evolutionary advantage in the process of fixing self-generated instructions.
+				  Plus, they are beautiful.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf04.jpg" alt="">
+			<div class="text">
+				<span class="title">By close-alikes</span>
+				Now I have regained hopes in someday finding myself surrounded by
+				close-alikes to us. However, they will not be audible, at least not in my
+				life span. We resolved the low freq vibration a superior solution for our
+				communicational goals ...
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf01.jpg" alt="">
+			<div class="text">
+				  <span class="title">To bear</span>
+				  We did not expect their surface to produce such a carbon powder coat, though
+				  this is the best model so far. I shall have to bear with the inconveniences.
+				  They seem to establish a parallel communication through that carbon coat and
+				  I find myself unable to decodify the signal into anything meaningful.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf15.jpg" alt="">
+			<div class="text">
+				  <span class="title">The zero level</span>
+				  Today a set of vibration came up from the zero level;  we expect to launch
+				  the transitional program in no longer than five basetime units. Psykesoma?				  galore and we'll betray our very nature into infinite, unending 2D surfaces.
+				  We do need that vibration, and we will conquer its source.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf41.jpg" alt="">
+			<div class="text">
+				  <span class="title">Beautifully</span>
+				  To keep my sanity I wear the tactile sensors all the time. They translate
+				  beautifully; I can even see distances while still on Psykesoma. This was
+				  quite a discovery. We have grown more adaptable than expected.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf26.jpg" alt="">
+			<div class="text">
+				  <span class="title">Uneasy to match</span>
+				  Yewoona had to travel farther and longer than I did. Her base orbiter was
+				  set to keep a complex combinational path that made it uneasy to match our
+				  circuits. But her nature showed stronger than programmed.
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf50.jpg" alt="">
+			<div class="text">
+				  <span class="title">Adapted to serve</span>
+				  Keep feeding them. We will never be this lucky again; an autogenerated
+				  species adapted to serve all our needs!
+			</div>
+		</div>
+		<div class="slide">
+			<img class="diapo" src="images/sf19.jpg" alt="">
+			<div class="text">
+				  <a class="title" href="http://www.dhteumeuleu.com">At soonest</a>
+				  "Blood is dark red, iron dark blue, this tale is blissful and so are you". I
+				  should get to the hotel at soonest. The agency guy must be there already,
+				  with some luck we'll have some nice dinner on him. How's that?
+			</div>
+		</div>
+	</div> 
+</div>
+<script type="text/javascript">
+/* ==== slider nameSpace ==== */
+var slider = function() {
+	/* ==== private methods ==== */
+	function getElementsByClass(object, tag, className) {
+		var o = object.getElementsByTagName(tag);
+		for ( var i = 0, n = o.length, ret = []; i < n; i++) {
+			if (o[i].className == className) ret.push(o[i]);
+		}
+		if (ret.length == 1) ret = ret[0];
+		return ret;
+	}
+	function setOpacity (obj,o) {
+		if (obj.filters) obj.filters.alpha.opacity = Math.round(o);
+		else obj.style.opacity = o / 100;
+	}
+	/* ==== Slider Constructor ==== */
+	function Slider(oCont, speed, iW, iH, oP) {
+		this.slides = [];
+		this.over   = false;
+		this.S      = this.S0 = speed;
+		this.iW     = iW;
+		this.iH     = iH;
+		this.oP     = oP;
+		this.oc     = document.getElementById(oCont);
+		this.frm    = getElementsByClass(this.oc, 'div', 'slide');
+		this.NF     = this.frm.length;
+		this.resize();
+		for (var i = 0; i < this.NF; i++) {
+			this.slides[i] = new Slide(this, i);
+		}
+		this.oc.parent = this;
+		this.view      = this.slides[0];
+		this.Z         = this.mx;
+		/* ==== on mouse out event ==== */
+		this.oc.onmouseout = function () {
+			this.parent.mouseout();
+			return false;
+		}
+	}
+	Slider.prototype = {
+		/* ==== animation loop ==== */
+		run : function () {
+			this.Z += this.over ? (this.mn - this.Z) * .5 : (this.mx - this.Z) * .5;
+			this.view.calc();
+			var i = this.NF;
+			while (i--) this.slides[i].move();
+		},
+		/* ==== resize  ==== */
+		resize : function () {
+			this.wh = this.oc.clientWidth;
+			this.ht = this.oc.clientHeight;
+			this.wr = this.wh * this.iW;
+			this.r  = this.ht / this.wr;
+			this.mx = this.wh / this.NF;
+			this.mn = (this.wh * (1 - this.iW)) / (this.NF - 1);
+		},
+		/* ==== rest  ==== */
+		mouseout : function () {
+			this.over      = false;
+			setOpacity(this.view.img, this.oP);
+		}
+	}
+	/* ==== Slide Constructor ==== */
+	Slide = function (parent, N) {
+		this.parent = parent;
+		this.N      = N;
+		this.x0     = this.x1 = N * parent.mx;
+		this.v      = 0;
+		this.loaded = false;
+		this.cpt    = 0;
+		this.start  = new Date();
+		this.obj    = parent.frm[N];
+		this.txt    = getElementsByClass(this.obj, 'div', 'text');
+		this.img    = getElementsByClass(this.obj, 'img', 'diapo');
+		this.bkg    = document.createElement('div');
+		this.bkg.className = 'backgroundText';
+		this.obj.insertBefore(this.bkg, this.txt);
+		if (N == 0) this.obj.style.borderLeft = 'none';
+		this.obj.style.left = Math.floor(this.x0) + 'px';
+		setOpacity(this.img, parent.oP);
+		/* ==== mouse events ==== */
+		this.obj.parent = this;
+		this.obj.onmouseover = function() {
+			this.parent.over();
+			return false;
+		}
+	}
+	Slide.prototype = {
+		/* ==== target positions ==== */
+		calc : function() {
+			var that = this.parent;
+			// left slides
+			for (var i = 0; i <= this.N; i++) {
+				that.slides[i].x1 = i * that.Z;
+			}
+			// right slides
+			for (var i = this.N + 1; i < that.NF; i++) {
+				that.slides[i].x1 = that.wh - (that.NF - i) * that.Z;
+			}
+		},
+		/* ==== HTML animation : move slides ==== */
+		move : function() {
+			var that = this.parent;
+			var s = (this.x1 - this.x0) / that.S;
+			/* ==== lateral slide ==== */
+			if (this.N && Math.abs(s) > .5) {
+				this.obj.style.left = Math.floor(this.x0 += s) + 'px';
+			}
+			/* ==== vertical text ==== */
+			var v = (this.N < that.NF - 1) ? that.slides[this.N + 1].x0 - this.x0 : that.wh - this.x0;
+			if (Math.abs(v - this.v) > .5) {
+				this.bkg.style.top = this.txt.style.top = Math.floor(2 + that.ht - (v - that.Z) * that.iH * that.r) + 'px';
+				this.v = v;
+				this.cpt++;
+			} else {
+				if (!this.pro) {
+					/* ==== adjust speed ==== */
+					this.pro = true;
+					var tps = new Date() - this.start;
+					if(this.cpt > 1) {
+						that.S = Math.max(2, (28 / (tps / this.cpt)) * that.S0);
+					}
+				}
+			}
+			if (!this.loaded) {
+				if (this.img.complete) {
+					this.img.style.visibility = 'visible';
+					this.loaded = true;
+				}
+			}
+		},
+		/* ==== light ==== */
+		over : function () {
+			this.parent.resize();
+			this.parent.over = true;
+			setOpacity(this.parent.view.img, this.parent.oP);
+			this.parent.view = this;
+			this.start = new Date();
+			this.cpt = 0;
+			this.pro = false;
+			this.calc();
+			setOpacity(this.img, 100);
+		}
+	}
+	/* ==== public method - script initialization ==== */
+	return {
+		init : function() {
+			// create instances of sliders here
+			// parameters : HTMLcontainer name, speed (2 fast - 20 slow), Horizontal ratio, vertical text ratio, opacity
+			this.s1 = new Slider("slider", 12, 1.84/3, 1/3.2, 70);
+			setInterval("slider.s1.run();", 16);
+		}
+	}
+}();
+</script>
+<script type="text/javascript">
+/* ==== start script ==== */
+slider.init();
+</script>
+<p class="develop-time2">   
+    开发周期：2小时  
+</p>
+</div><!----main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="title1">   
+    css3新增加属性特效
+</div>
+<div class="main-item1"> 
+<div class="main-item1-title">1.变形--旋转</div>
+<div class="main-item1-ct">
+<div class="wrapper">
+ <div><span>我不想旋转(^_^)</span></div>
+</div>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="main-item1"> 
+<div class="main-item1-title">2.变形--扭曲</div>
+<div class="main-item1-ct">
+<div class="wrapper2">
+  <div><span>我不想被扭曲(^_^)</span></div>
+</div>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="main-item1"> 
+<div class="main-item1-title">3.变形--位移</div>
+<div class="main-item1-ct" style=" height:400px;">
+<div class="wrapper4">
+  <div>我向右向下移动</div>
+</div>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="main-item1"> 
+<div class="main-item1-title">4.动画--过渡属性</div>
+<div class="main-item1-ct">
+<div class="wrapper5"> 
+</div>
+<p class="develop-time3">   
+鼠标移动到图形上，就看到神奇效果啦~~
+</p>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="main-item1"> 
+<div class="main-item1-title">5.动画2--过渡属性</div>
+<div class="main-item1-ct">
+<div class="wrapper6"> 
+</div>
+<p class="develop-time3">   
+鼠标移动到图形上，就看到神奇效果啦~~
+</p>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+<div class="main-item1"> 
+<div class="main-item1-title">6.动画3</div>
+<div class="main-item1-ct" style=" height:400px;">
+<div class="wrapper7"> 
+</div>
+</div><!-------main-item1-ct------>
+</div>
+<!-----main-item1 end------->
+ </div>
+<!----main end------>
+</body>
+</html>

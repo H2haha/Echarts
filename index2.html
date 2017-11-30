@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>前端开发图表和线路图js特效展示</title>
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="bd-color">
+     <div class="title2"> 
+     前端开发图表和线路图js特效展示 
+     </div>
+    <div class="main">
+<div class="title1">   
+   Echarts图表特效
+</div>
+<!--Step:1 Prepare a dom for ECharts which (must) has size (width & hight)-->
+    <!--Step:1 为ECharts准备一个具备大小（宽高）的Dom-->
+    <div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+    <div id="mainMap" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+    <p class="develop-time"  style=" text-align:center;">   
+    开发周期：Echarts 参考网址：<a href="http://echarts.baidu.com/">http://echarts.baidu.com/</a>
+        主要用于画数据图表，每个图表6小时。
+    </p>  
+    <!--Step:2 Import echarts.js-->
+    <!--Step:2 引入echarts.js-->
+    <script src="js/echarts.js"></script>
+    
+    <script type="text/javascript">
+    // Step:3 conifg ECharts's path, link to echarts.js from current page.
+    // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
+    require.config({
+        paths: {
+            echarts: './js'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+            'echarts/chart/scatter',
+            'echarts/chart/map'
+        ],
+        function (ec) {
+            //--- 折柱 ---
+               var myChart = ec.init(document.getElementById('main'));
+			   
+            myChart.setOption({
+
+ tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['蒸发量','降水量']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        splitArea : {show : true}
+                    }
+                ],
+                series : [
+                    {
+                        name:'蒸发量',
+                        type:'bar',
+                        data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                    },
+                    {
+                        name:'降水量',
+                        type:'bar',
+                        data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                    }
+                ]
+
+
+    	});    
+            // --- 地图 ---
+            var myChart2 = ec.init(document.getElementById('mainMap'));
+            myChart2.setOption({
+                tooltip : {
+                    trigger: 'item',
+                    formatter: '{b}'
+                },
+                series : [
+                    {
+                        name: '中国',
+                        type: 'map',
+                        mapType: 'china',
+                        selectedMode : 'multiple',
+                        itemStyle:{
+                            normal:{label:{show:true}},
+                            emphasis:{label:{show:true}}
+                        },
+                        data:[
+                            {name:'广东',selected:true}
+                        ]
+                    }
+                ]
+            });
+        }
+    );
+    </script>
+<div class="title1">   
+  Jtopo图表特效
+</div>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jtopo-0.4.8-min.js"></script>
+<div class="main-item1-ct2">
+<canvas width="800" height="400" id="canvas" style=" background-color:#000; border:1px solid #444;display:inline-block;">
+</canvas>
+</div>
+<p class="develop-time3"  style=" text-align:center;">   
+    开发周期:jTopo参考网址：<a href="http://www.jtopo.com/index.html ">http://www.jtopo.com/index.html </a>主要用于在网页上画电路图及拓扑图,每个图表8小时。
+ </p>  
+<script type="text/javascript" >
+            $(document).ready(function(){					
+			var canvas = document.getElementById('canvas');
+			var stage = new JTopo.Stage(canvas);
+			//显示工具栏
+
+			var scene = new JTopo.Scene();	
+			
+			function node(x, y, img, name){
+				var node = new JTopo.Node(name);
+				node.setImage('./img/pstn/' + img, true);				
+				node.setLocation(x, y);
+				scene.add(node);
+				return node;
+			}				
+			
+			function linkNode(nodeA, nodeZ){
+				var link = new JTopo.FoldLink(nodeA, nodeZ);
+				link.lineWidth = 3;
+				link.strokeColor = '255,255,0';
+				scene.add(link);
+				return link;
+			}
+			
+			var s1 = node(49, 41, 'satellite_antenna.png', '1');
+            var s2 = node(57, 136, 'antenna.png', '2');
+            var s3 = node(57, 251, 'msc.png', '3');
+            
+            var r1 = node(143, 43, 'router.png');
+            var r2 = node(143, 63, 'router.png');
+            r2.alarm = '报警';
+            var r3 = node(143, 83, 'router.png');
+            var r4 = node(143, 103, 'router.png');
+            var r5 = node(143, 123, 'router.png', '4');
+            
+            var r6 = node(243, 123, 'router.png', '5');
+			var r7 = node(300, 123, 'router.png', '6');
+			var r8 = node(500, 300, 'router.png', '7');
+			var r9 = node(600, 300, 'router.png', '8');
+			var r10 = node(600, 200, 'router.png', '9');
+			var r11 = node(600, 100, 'router.png', '10');
+			var r12 = node(700, 100, 'router.png', '11');
+			var r13 = node(700, 100, 'router.png', '12');
+			r8.alarm='报警'
+            linkNode(r1, r6);
+            linkNode(r2, r6);
+            linkNode(r3, r6);
+            linkNode(r4, r6);
+            linkNode(r5, r6);
+			linkNode(s1, r2);
+            linkNode(s2, r2);
+		    linkNode(r6, r7);
+            linkNode(s3, r7);
+			linkNode(r7, r8);
+			linkNode(r8, r9);
+			linkNode(r9, r10);
+			linkNode(r10, r11);
+			linkNode(r11, r13);				
+			stage.add(scene);
+		});			
+</script>
+ </div>
+<!----main end------>
+</body>
+</html>
